@@ -1,0 +1,23 @@
+<launch>
+
+  <param name="motorcount" value="0" />
+ 
+  <node pkg="phidgets_motor_ctl" name="phidget1_motorctl"  type="motorctl.py" output="screen">
+
+  <!-- motor_id is based on device serial number retrieved via lsusb -v -->
+
+  <param name="motor_id" value="468080" /> 
+  <remap from="motor_ctl" to="phidget1_motorctl" />
+  </node>
+
+  <node pkg="phidgets_motor_ctl" name="phidget2_motorctl" type="motorctl.py" output="screen">
+  <param name="motor_id" value="468409" /> 
+  <remap from="motor_ctl" to="phidget2_motorctl" />
+  </node> 
+
+  <node pkg="phidgets_motor_ctl" name="motor_node"  type="motor_node.py" output="screen" />
+   
+  <node pkg="joy" name="joy_node" type="joy_node" />
+
+
+</launch>
